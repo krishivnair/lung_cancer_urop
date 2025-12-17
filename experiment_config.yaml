@@ -1,0 +1,71 @@
+experiment_name: HGNN_LungCancer_v1.0
+random_seed: 42
+project_name: Duke_Lung_HGNN
+
+# Data
+base_path: /content/drive/MyDrive/duke_lung_data
+subset_name: subset01
+annotations_file: DLCSD24_Annotations.csv
+metadata_file: DLCSD24_metadata_v1.1.csv
+num_patients: 50
+train_split: 0.8
+
+# Model
+hidden_channels: 256
+num_classes: 2
+num_layers: 4
+num_heads: 4
+dropout: 0.3
+
+# Hypergraph
+k_neighbors: 8
+spatial_threshold: 50.0
+feature_similarity_threshold: 0.7
+
+# Training
+batch_size: 4
+num_epochs: 100
+learning_rate: 0.001
+weight_decay: 0.0001
+patience: 15
+gradient_clip_norm: 1.0
+
+# Multi-task loss
+alpha_classification: 1.0
+alpha_regression: 0.5
+
+# Optimization
+use_mixed_precision: true
+num_workers: 2
+pin_memory: true
+
+# LR Scheduling
+cosine_t0: 10
+cosine_t_mult: 2
+cosine_eta_min: 0.000001
+plateau_factor: 0.5
+plateau_patience: 5
+
+# Preprocessing
+target_spacing:
+  - 1.0
+  - 1.0
+  - 1.0
+patch_size:
+  - 64
+  - 64
+  - 32
+hu_window_center: -600
+hu_window_width: 1500
+
+# Device
+device: cuda
+use_multi_gpu: false
+
+# Logging
+log_interval: 10
+checkpoint_interval: 10
+save_best_only: true
+
+# Version
+code_version: 1.0.0
