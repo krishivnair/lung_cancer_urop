@@ -1,0 +1,18 @@
+# Core dependencies
+torch>=2.0.0
+torch-geometric
+nibabel
+SimpleITK
+pandas
+numpy
+scipy
+scikit-learn
+scikit-image
+matplotlib
+seaborn
+tqdm
+pyyaml
+tensorboard
+
+# Optional (for experiment tracking)
+wandb
